@@ -163,3 +163,14 @@ body{
     scale: 0;
     opacity: 0;
 }
+
+.fadeIn{
+    animation: 0.5s fadeIn forwords;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeIn{
+   to { scale:1;
+    opacity:1;
+        }
+}
