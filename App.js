@@ -1,30 +1,21 @@
 const container =  document.querySelector(".container");
- 
 const search =  document.querySelector(".search-box button");
-
 const weatherBox =  document.querySelector(".weather-box");
-
 const weatherDetails =  document.querySelector(".weather-details");
-
 const error404 =  document.querySelector(".not-found");
 
-search.addEventListener('click',()=>{
+search.addEventListener('click', ()=> {
     
     const APIKey = 'b07a00e606548ea9c2ab8d92ec607bbe';
     const city = document.querySelector('.search-box input').value;
+
      if(city== '' )
          return;
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIKey}`).then( response => response.json())
-      .then(data => {
-        console.log("City:", data.name);
-        console.log("Temperature:", data.main.temp);
-        console.log("Weather:", data.weather[0].description);
-        console.log("Wind Speed:", data.wind.speed);
-      })
-      .then(json => {
-                    
 
-            if(json.cod === '404'){
+     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`).then( response => response.json()).then(json => {
+       
+
+            if(json.cod ==='404'){
             container.style.height = '400px';
             weatherBox.style.display = 'none';
             weatherDetails.style.display = 'none';
@@ -36,17 +27,13 @@ search.addEventListener('click',()=>{
            error404.style.display = 'none';
             error404.classList.remove('fadeIn');
 
-            const image = document.querySelector('.weahter-box img');
-            const Temperature = document.querySelector('.weather-box .temperature');
+            const image = document.querySelector('.weather-box img');
+            const temperature = document.querySelector('.weather-box .temperature'); 
+            const description = document.querySelector('.weather-box .description');
+            const humidity = document.querySelector('.weather-details .humidity');
+            const wind = document.querySelector('.weather-details .wind span');
 
-            
-            const Description = document.querySelector('.weather-box .description');
-
-            const Humidity = document.querySelector('.weather-details .humidity');
-
-            const Wind = document.querySelector('.weather-details .wind span');
-
-            switch(json.weather[0].main){
+            switch (json.weather[0].main){
                 case 'Clear':
                     image.src = 'images/clear.png';
                     break;
@@ -59,11 +46,11 @@ search.addEventListener('click',()=>{
                     image.src = 'images/snow.png';
                     break;
                 
-                 case 'Cloud':
+                 case 'Clouds':
                     image.src = 'images/cloud.png';
                     break;
 
-                case 'mist':
+                case 'Haze':
                     image.src = 'images/mist.png';
                     break; 
 
@@ -72,10 +59,10 @@ search.addEventListener('click',()=>{
 
             }
 
-            Temperature.innerHTML = `${parseInt(json.main.temp)}<span>`;
-            Description.innerHTML = `${json.weather[0].description}`;
-            Humidity.innerHTML = `${json.main.humidity}%`;
-            Wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
+            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
+            description.innerHTML = `${json.weather[0].description}`;
+            humidity.innerHTML = `${json.main.humidity}%`;
+            wind.innerHTML = `${parseInt(json.wind.speed)}km/h`;
 
             weatherBox.style.display = '';
             weatherDetails.style.display = '';

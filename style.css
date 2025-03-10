@@ -1,7 +1,9 @@
+
 *{
     margin: 0;
     padding: 0;
     border: 0;
+    outline: none;
     box-sizing: border-box;
 }
 
@@ -10,18 +12,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #06283D;
+    background: #06283D;
 }
 
 .container{
     position: relative;
     width: 400px;
     height: 105px;
-    background-color: #fff;
-    padding:28px 32px;
+    background: #fff;
+    padding: 28px 32px;
     overflow: hidden;
-    border-radius:18px;
-    font-family: 'roboto',sans-serif;
+    border-radius: 18px;
+    font-family: 'Roboto', sans-serif;
     transition: 0.6s ease-out;
 }
 
@@ -53,8 +55,8 @@ body{
     cursor: pointer;
     width: 50px;
     height: 50px;
-    color :#06283D;
-    background-color:#dff6ff;
+    color: #06283D;
+    background: #dff6ff;
     border-radius: 50%;
     font-size: 22px;
     transition: 0.4s ease;
@@ -62,22 +64,24 @@ body{
 
 .search-box button:hover{
     color: #fff;
-    background-color: #06283D;
+    background: #06283D;
 }
 
 .search-box i{
-    position:absolute;
+    position: absolute;
     color: #06283D;
     font-size: 28px;
 }
+
 .weather-box{
     text-align: center;
 }
+
 .weather-box img{
-    width: 40%;
-    object-fit: cover;
+    width: 60%;
     margin-top: 30px;
 }
+
 .weather-box .temperature{
     position: relative;
     color: #06283D;
@@ -87,16 +91,16 @@ body{
     margin-left: -16px;
 }
 
-.weahter-box .temperature span{
+.weather-box .temperature span{
     position: absolute;
     margin-left: 4px;
     font-size: 1.5rem;
-
 }
 
-.weahter-box .desription{
+.weather-box .description{
     color: #06283D;
     font-size: 22px;
+    font-weight: 500;
     text-transform: capitalize;
 }
 
@@ -118,6 +122,7 @@ body{
     padding-left: 20px;
     justify-content: flex-start;
 }
+
 .weather-details .wind{
     padding-right: 20px;
     justify-content: flex-end;
@@ -127,7 +132,7 @@ body{
     color: #06283D;
     font-size: 26px;
     margin-right: 10px;
-
+    margin-top: 6px;
 }
 
 .weather-details span{
@@ -150,27 +155,31 @@ body{
     opacity: 0;
     display: none;
 }
+
 .not-found img{
     width: 70%;
 }
+
 .not-found p{
     color: #06283D;
     font-size: 22px;
     font-weight: 500;
     margin-top: 12px;
 }
+
 .weather-box, .weather-details{
     scale: 0;
     opacity: 0;
 }
 
 .fadeIn{
-    animation: 0.5s fadeIn forwords;
+    animation: 0.5s fadeIn forwards;
     animation-delay: 0.5s;
 }
 
 @keyframes fadeIn{
-   to { scale:1;
-    opacity:1;
-        }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }
